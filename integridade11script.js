@@ -8,5 +8,5 @@ const filePath = 'flag.txt';
             console.log('Error reading file');
             return;
         }
-        console.log((data);
+        console.log(data);
     }
