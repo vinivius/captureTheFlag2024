@@ -1,19 +1,10 @@
-const express = require('express');
-const path = require('path');
-const app = express();
-const PORT = 400;
+const fs = require('fs');
 
-// Serve the flag.txt file when the root route is accessed
-app.get('/', (req, res) => {
-    const filePath = path.join(__dirname, 'flag.txt');
-    res.sendFile(filePath, (err) => {
-        if (err) {
-            console.error('Error sending file:', err);
-            res.status(500).send('Error serving file.');
-        }
-    });
-});
-
-app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
+// Read the file asynchronously
+fs.readFile('flag.txt', 'utf8', (err, data) => {
+    if (err) {
+        console.error('Error reading the file:', err);
+        return;
+    }
+    console.log('File contents:', data);
 });
